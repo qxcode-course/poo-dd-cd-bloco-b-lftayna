@@ -3,9 +3,9 @@ class Watch:
         self.__hora = 0
         self.__minuto = 0
         self.__segundo = 0
+        self.set_hora(hora)
         self.set_minuto(minuto)
         self.set_segundo(segundo)
-        self.set_hora(hora)
 
     def set_hora(self, hora: int = 0): # escrita
         if hora < 0 or hora > 23:
@@ -41,14 +41,14 @@ class Watch:
         if self.__hora > 23:
             self.__hora = 0
 
-    def get_hora(self) -> int: 
-        return self.__hora
-
     def get_minuto(self) -> int: 
         return self.__minuto
 
     def get_segundo(self) -> int: 
         return self.__segundo
+
+    def get_hora(self) -> int: 
+        return self.__hora
 
 def main():
     relogio = Watch ()
