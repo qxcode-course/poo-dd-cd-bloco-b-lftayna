@@ -1,7 +1,7 @@
 class Pessoa:
     def __init__(self, name: str = "", age: int = 0):
         self.__name: str = ""
-        self.__age: int = 0
+        self.__age: int = age
         
     def get_name(self) -> str:
         return self.__name
@@ -18,17 +18,17 @@ class Moto:
         self.__time: int = 0
         self.__person: Pessoa | None = "(empty)"
 
-    def getPower(self, int):
+    def getPower(self) -> int:
         return self.__power
 
-    def getTime(self, int):
+    def getTime(self) -> int:
         return self.__time
 
-    def getPerson(self, person = Pessoa):
+    def getPerson(self) -> Pessoa | None:
         return self.__person
 
     def inserir(self, person = Pessoa) -> bool:
-        if self.__person != None:
+        if self.__person == None:
             print("fail: busy motorcycle")
             return False
         else: 
@@ -36,7 +36,7 @@ class Moto:
             return True
 
     def remover(self, Pessoa = None):
-        if self.__person != None:
+        if self.__person is None:
             print("fail: empty motorcycle")
             return None
         aux: Pessoa = self.__person
@@ -60,14 +60,6 @@ class Moto:
     def buyTime(self, time: int):
         self.__time += time
 
-    def inserir(self, person = Pessoa) -> bool:
-        if self.__person == 1:
-            print("fail: busy motorcycle")
-            return False
-        else: 
-            self.__person += person
-            return True
-
 def main():
     moto = Moto()
     while True:
@@ -83,6 +75,8 @@ def main():
             idade = int(args[2])
             person = Pessoa(nome, idade)
             moto.inserir(person)
+        if args[0] == "leave":
+            moto.remover()
 main()
 
 
